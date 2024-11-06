@@ -31,7 +31,7 @@ class Analyzer():
         """
 
         results = self.game.show_results() #get results
-        jackpots = results.apply(lambda die_rolls: len(set(die_rolls)) == 1).sum() # for a column wise function we can use .apply, lamba function checks the set of the column and sees if it has one value. 
+        jackpots = results.apply(lambda die_rolls: len(set(die_rolls)) == 1, axis=1).sum() # for a column wise function we can use .apply, lamba function checks the set of the column and sees if it has one value. 
 
         return jackpots
 
@@ -88,18 +88,14 @@ if __name__ == '__main__':
     d2 = Die(f_d6)
 
     c1 = Die(f_coin)
-    c2 = Die(f_coin, np.array([1,2]))
+    c2 = Die(f_coin, np.array([5,1]))
     
     game1 = Game([c1,c2])
-    game1.play(10)
+    game1.play(1000)
     analyze1 = Analyzer(game1)
 
     game2 = Game([d1,d2])
-    game2.play(25)
+    game2.play(1000)
     analyze2 = Analyzer(game2)
-    print(game2.show_results())
-    print("\n")
-    print(analyze2.ComboCounts())
-    print("\n")
-    print(analyze2.PermCounts())
+
     
