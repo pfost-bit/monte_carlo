@@ -8,5 +8,9 @@ setup(
     author='Pat Foster',
     author_email='ezq9qu@virginia.edu',
     license='MIT',
-    packages=["monte_carlo"]
+    packages=["monte_carlo"],
+    install_requires=[
+    "numpy",
+    "pandas"
+    ]
 )
