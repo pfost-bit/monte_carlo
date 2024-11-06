@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-
+from .game import Game
 class Analyzer():
     """
     An Analyzer object takes the results of a single game and computes various descriptive statistical properties about it.

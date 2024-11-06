@@ -1,4 +1,4 @@
 from .die import Die
-from .analyzer import Game
-from .setup import Setup
+from .game import Game
+from .analyzer import analyzer
 

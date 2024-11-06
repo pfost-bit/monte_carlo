@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from die import Die
+from .die import Die
 
 class Game():
     """
