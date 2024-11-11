@@ -45,11 +45,9 @@ class Game():
         results.index.name = "Roll" #each index is an individual Roll 
 
         self.results = results # set the self_results to the new DataFrame
-        
 
-
-
-
+    def show_results():
+        return self.results.copy()
 
 
 if __name__ == '__main__':
