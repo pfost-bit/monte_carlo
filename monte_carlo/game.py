@@ -46,8 +46,23 @@ class Game():
 
         self.results = results # set the self_results to the new DataFrame
 
-    def show_results():
-        return self.results.copy()
+    def show_results(self, form = "wide"):
+        """
+        A method to return the results of the results DataFrame. The dataframe is returned as a wide dataframe by default, and a narrow one if wanted.
+        args:
+            form: "wide" or "narrow" (default of "wide)
+        returns: 
+            self.results.copy(): A copy of the results table.
+        """
+        if form == "wide": 
+            return self.results.copy() #returns the wide table made from the play method
+        elif form == "narrow":
+            self.results = self.results.stack().reset_index() #changes from wide to narrow
+            self.results.columns = ['Roll', 'Die', 'Outcome'] # gives new column names
+            self.results.set_index(['Roll', 'Die'], inplace = True) # gives new indicies as a multindex
+            return self.results.copy() #returns narrow
+        else:
+            raise ValueError("The parameter of form should by 'wide' or 'narrow'") #error if not wide or narrow
 
 
 if __name__ == '__main__':
