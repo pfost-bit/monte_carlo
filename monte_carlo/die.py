@@ -92,6 +92,8 @@ class Die():
         """
         return self.__dTable.copy()
 
+
+
 if __name__ == '__main__':
 
     data1 = [1,2,3,4,5,6]
