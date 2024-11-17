@@ -99,4 +99,6 @@ if __name__ == '__main__':
     data1 = [1,2,3,4,5,6]
     six_side = np.array(data1)
     d6 = Die(six_side)
+    print(d6.roll_die(10))
     print(d6.show_die_state())
+    

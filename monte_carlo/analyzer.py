@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from .game import Game
+from monte_carlo.game import Game
+from monte_carlo.die import Die
 class Analyzer():
     """
     An Analyzer object takes the results of a single game and computes various descriptive statistical properties about it.
@@ -43,9 +44,9 @@ class Analyzer():
         returns:
             face_counts: pd.DataFrame of the results. A wide dataframe that shows how many times each face was rolled per dice.
         """
-
-        results0 = self.game.show_results("narrow").copy() #get results in the narrow format
-        face_counts = results0.groupby(["Die", "Outcome"]).value_counts() #use groupby to get the value of each outcome, for each die
+        
+        results = self.game.show_results("narrow") #get results in the narrow format
+        face_counts = results.groupby(["Die", "Outcome"]).size() #use groupby to get the value of each outcome, for each die
         face_counts = face_counts.unstack() #convert to wide
         face_counts.index.name = "Die"
         
@@ -79,3 +80,23 @@ class Analyzer():
         perm_counts = perm_counts.set_index("Permutation").sort_index(axis=0) #createMultIndex
 
         return perm_counts
+
+if __name__ == '__main__':
+
+    f_coin = np.array(["heads", "tails"])
+    f_d6 = np.array([1,2,3,4,5,6])
+
+    d1 = Die(f_d6)
+    d2 = Die(f_d6)
+
+    c1 = Die(f_coin)
+    c2 = Die(f_coin, np.array([1,2]))
+    
+    game = Game([d1,d1])
+    game.play(10)
+
+    analyzer1 = Analyzer(game)
+    print(game.show_results())
+    print(analyzer1.FaceCounts())
+    print(game.show_results())
+    

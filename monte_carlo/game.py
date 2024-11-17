@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from .die import Die
+from monte_carlo.monte_carlo.die import Die
 
 class Game():
     """
@@ -57,10 +57,10 @@ class Game():
         if form == "wide": 
             return self.results.copy() #returns the wide table made from the play method
         elif form == "narrow":
-            self.results = self.results.stack().reset_index() #changes from wide to narrow
-            self.results.columns = ['Roll', 'Die', 'Outcome'] # gives new column names
-            self.results.set_index(['Roll', 'Die'], inplace = True) # gives new indicies as a multindex
-            return self.results.copy() #returns narrow
+            results_narrow = self.results.copy().stack().reset_index() #changes from wide to narrow
+            results_narrow.columns = ['Roll', 'Die', 'Outcome'] # gives new column names
+            results_narrrow.set_index(['Roll', 'Die'], inplace = True) # gives new indicies as a multindex
+            return results_narrow.copy() #returns narrow
         else:
             raise ValueError("The parameter of form should by 'wide' or 'narrow'") #error if not wide or narrow
 
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     c1 = Die(f_coin)
     c2 = Die(f_coin, np.array([1,2]))
     
-    game = Game([c1,c2])
+    game = Game([d1,d1])
     game.play(10)
     print(game.show_results())
     print(game.show_results("narrow"))
