@@ -105,7 +105,7 @@ from monte_carlo import Die, Game, Analyzer #importing the classes needed for us
 * Now to create some game objects:
 
   ```python
-  game1 = Game([die1,die1]) #this passes two of the same die objects
+  game1 = Game([die2,die2]) #this passes two of the same die objects (fair ones)
   ```
 
 * We can now play a game by rolling the two dies passed to the Game object:
