@@ -78,15 +78,31 @@ from monte_carlo import Die, Game, Analyzer #importing the classes needed for us
 * Dice can also be created by passing a separate np.array() of likelihoods:
 
   ```python
-  die3 = Die(np.array([1,2,3,4,5,6]),np.array([5,1,1,1,1,1])) this makes the value 1, 5 times more likely to occur.
+  die3 = Die(np.array([1,2,3,4,5,6]),np.array([5,1,1,1,1,1])) #this makes the value 1, 5 times more likely to occur.
   ```
 
 * The side likelihoods can also be changed using the change_weight() method.
 
   ```python
-  die1.change_weight(1,5)
+  die1.change_weight(1,5) # here the "face" 1 is changed to have a weight of 5
   ```
+  So now the two die objects, die1 and die3 are equivalent.
 
+* Finally the die objects can be rolled:
+
+  ```python
+  die1.roll_die(10) #rolls the die 10 times
+  ```
+  This roll method is not too important by itself but is very important in expanding to the Game class.
+
+
+#### The Game Class:
+
+* Now to create some game objects:
+
+  ```python
+  game1 = Game([die1,die1]) #this passes two of the same die objects
+  ```
 
 
 
