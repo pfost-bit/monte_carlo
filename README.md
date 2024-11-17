@@ -64,6 +64,7 @@ import numpy as np #importing numpy
 import pandas as pd #importing pandas
 from monte_carlo import Die, Game, Analyzer #importing the classes needed for using the monte_carlo package
 ```
+
 #### The Die Class:
 
 * Now we will create some Die objects:
@@ -72,8 +73,7 @@ from monte_carlo import Die, Game, Analyzer #importing the classes needed for us
    die1 = Die(np.array([1,2,3,4,5,6]))#fair
    die2 = Die(np.array([1,2,3,4,5,6]))#fair
    ```
-   This creates two identical dice with 6 "faces," each with an equal likelihood of being rolled.
-      * The faces are passed as a np.array() of objects, the objects should be a number or a string
+   This creates two identical dice with 6 "faces," each with an equal likelihood of being rolled. The faces are passed as a np.array() of objects; the objects should be a number or a string.
   
 * Dice can also be created by passing a separate np.array() of likelihoods:
 
@@ -121,18 +121,18 @@ from monte_carlo import Die, Game, Analyzer #importing the classes needed for us
   ```
 
   ```raw
-          0  1
-    Roll
-    0     3  4
-    1     4  4
-    2     1  4
-    3     4  2
-    4     2  5
-    5     2  3
-    6     4  6
-    7     3  4
-    8     4  2
-    9     4  4
+	    0	1
+    Roll		
+    0	2	1
+    1	6	2
+    2	2	5
+    3	6	4
+    4	4	3
+    5	1	6
+    6	6	6
+    7	3	4
+    8	6	4
+    9	3	1
   ```
     * Can also be called in the narrow format
 
@@ -141,31 +141,58 @@ from monte_carlo import Die, Game, Analyzer #importing the classes needed for us
     ```
 
     ```raw
-              Outcome
-    Roll Die
-    0    0          3
-         1          4
-    1    0          4
-         1          4
-    2    0          1
-         1          4
-    3    0          4
-         1          2
-    4    0          2
-         1          5
-    5    0          2
-         1          3
-    6    0          4
-         1          6
-    7    0          3
-         1          4
-    8    0          4
-         1          2
-    9    0          4
-         1          4
+        Outcome
+    Roll Die	
+    0	0	2
+    1	1
+    1	0	6
+    1	2
+    2	0	2
+    1	5
+    3	0	6
+    1	4
+    4	0	4
+    1	3
+    5	0	1
+    1	6
+    6	0	6
+    1	6
+    7	0	3
+    1	4
+    8	0	6
+    1	4
+    9	0	3
+    1	1
     ```
 
-    
+#### The Analyzer Class:  
+
+Here we can see some simple statistics about our game.  
+
+* Lets create an Analyzer() Object:
+
+  ```python
+   analyzer1 = Analzyer(game1)
+  ```
+
+* We can see how many "JackPots" were rolled, which is how many times all of the outcomes were the same.
+
+  ```python
+  analyzer1.JackPot()
+  ```
+
+  ```raw
+  np.int64(1)
+  ```
+* We can also see the number of times each face is rolled.
+
+  ```python
+  analyzer1.FaceCounts()
+  ```
+
+  ```raw
+  
+  ```
 
 
 
