@@ -93,6 +93,10 @@ from monte_carlo import Die, Game, Analyzer #importing the classes needed for us
   ```python
   die1.roll_die(10) #rolls the die 10 times
   ```
+
+  ```raw
+  [np.int64(4), np.int64(2), np.int64(5), np.int64(3), np.int64(6), np.int64(1), np.int64(1), np.int64(5), np.int64(5), np.int64(2)]
+  ```
   This roll method is not too important by itself but is very important in expanding to the Game class.
 
 
@@ -104,10 +108,64 @@ from monte_carlo import Die, Game, Analyzer #importing the classes needed for us
   game1 = Game([die1,die1]) #this passes two of the same die objects
   ```
 
+* We can now play a game by rolling the two dies passed to the Game object:
 
+  ```python
+  game1.play(10) # this rolls each die 10 times
+  ```
 
+* We can see the results of these rolls by using the method show_results:
 
+  ```python
+  game1.show_results()
+  ```
 
+  ```raw
+          0  1
+    Roll
+    0     3  4
+    1     4  4
+    2     1  4
+    3     4  2
+    4     2  5
+    5     2  3
+    6     4  6
+    7     3  4
+    8     4  2
+    9     4  4
+  ```
+    * Can also be called in the narrow format
+
+    ```python
+    game1.show_results("narrow")
+    ```
+
+    ```raw
+              Outcome
+    Roll Die
+    0    0          3
+         1          4
+    1    0          4
+         1          4
+    2    0          1
+         1          4
+    3    0          4
+         1          2
+    4    0          2
+         1          5
+    5    0          2
+         1          3
+    6    0          4
+         1          6
+    7    0          3
+         1          4
+    8    0          4
+         1          2
+    9    0          4
+         1          4
+    ```
+
+    
 
 
 
