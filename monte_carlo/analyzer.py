@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from monte_carlo.game import Game
-from monte_carlo.die import Die
+from .game import Game
+from .die import Die
 class Analyzer():
     """
     An Analyzer object takes the results of a single game and computes various descriptive statistical properties about it.
@@ -45,7 +45,7 @@ class Analyzer():
             face_counts: pd.DataFrame of the results. A wide dataframe that shows how many times each face was rolled per dice.
         """
         
-        results = self.game.show_results("narrow") #get results in the narrow format
+        results = self.game.show_results("narrow").copy() #get results in the narrow format
         face_counts = results.groupby(["Die", "Outcome"]).size() #use groupby to get the value of each outcome, for each die
         face_counts = face_counts.unstack() #convert to wide
         face_counts.index.name = "Die"
