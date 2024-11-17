@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='monte_carlo',
-    version='0.5',
+    version='0.6',
     description='A montecarlo simulator written for DS5100',
     url='https://github.com/pfost-bit/monte_carlo',
     author='Pat Foster',

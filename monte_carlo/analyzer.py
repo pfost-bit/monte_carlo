@@ -9,7 +9,8 @@ class Analyzer():
     Methods:
         JackPot(): A method to determine the numnber of "jackpots" rolled in a game.
         FaceCounts(): A method to return a datframe with the total number of facecounts for each die.
-        
+        ComboCounts(): A method to count the counts of each combination of faces rolled.
+        PermCounts(): A method to count the counts of each permuatation of the face rolled.
 
     Attributes:
         game: The game object to analyze, must be a game object
