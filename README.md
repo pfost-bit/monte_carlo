@@ -121,18 +121,18 @@ from monte_carlo import Die, Game, Analyzer #importing the classes needed for us
   ```
 
   ```raw
-	    0	1
-    Roll		
-    0	2	1
-    1	6	2
-    2	2	5
-    3	6	4
-    4	4	3
-    5	1	6
-    6	6	6
-    7	3	4
-    8	6	4
-    9	3	1
+		0	1
+	Roll		
+	0	4	5
+	1	3	2
+	2	1	2
+	3	2	4
+	4	5	6
+	5	1	4
+	6	4	5
+	7	2	4
+	8	1	2
+	9	6	1
   ```
     * Can also be called in the narrow format
 
@@ -141,28 +141,28 @@ from monte_carlo import Die, Game, Analyzer #importing the classes needed for us
     ```
 
     ```raw
-        Outcome
-    Roll Die	
-    0	0	2
-    1	1
-    1	0	6
-    1	2
-    2	0	2
-    1	5
-    3	0	6
-    1	4
-    4	0	4
-    1	3
-    5	0	1
-    1	6
-    6	0	6
-    1	6
-    7	0	3
-    1	4
-    8	0	6
-    1	4
-    9	0	3
-    1	1
+			Outcome
+	Roll	Die	
+	0	0	4
+		1	5
+	1	0	3
+		1	2
+	2	0	1
+		1	2
+	3	0	2
+		1	4
+	4	0	5
+		1	6
+	5	0	1
+		1	4
+	6	0	4
+		1	5
+	7	0	2
+		1	4
+	8	0	1
+		1	2
+	9	0	6
+		1	1
     ```
 
 #### The Analyzer Class:  
@@ -182,7 +182,7 @@ Here we can see some simple statistics about our game.
   ```
 
   ```raw
-  np.int64(1)
+  np.int64(0) #in this case, no outcomes were rolled the same
   ```
 * We can also see the number of times each face is rolled.
 
@@ -191,8 +191,47 @@ Here we can see some simple statistics about our game.
   ```
 
   ```raw
-  
+  Outcome	1	2	3	4	5	6
+	Die						
+	0	3.0	2.0	1.0	2.0	1.0	1.0
+	1	1.0	3.0	NaN	3.0	2.0	1.0
   ```
+
+* We can see the number of Combinations that are rolled; combinations are not unique, (1,2) == (2,1)
+ 
+```python
+analyzer1.ComboCounts()
+```
+
+```raw
+      Count
+Combination	
+(1, 2)	2
+(1, 4)	1
+(1, 6)	1
+(2, 3)	1
+(2, 4)	2
+(4, 5)	2
+(5, 6)	1
+```
+
+* We can finally see the different permutations that are rolled; permutations are unique
+
+```python
+analyzer1.PermCounts()
+```
+
+```raw
+      Count
+Permutation	
+(1, 2)	2
+(1, 4)	1
+(2, 4)	2
+(3, 2)	1
+(4, 5)	2
+(5, 6)	1
+(6, 1)	1
+```
 
 
 
