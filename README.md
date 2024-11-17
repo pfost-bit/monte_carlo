@@ -51,4 +51,60 @@ The project is a downloadable package that can be accessed here in this file str
     Successfully installed monte_carlo-0.6
    ```
 
-    
+The package should now be successfully installed.
+
+### Some Examples  
+
+Now that we have installed the package, we can try to use it to our advantage.
+
+First, we need to make sure to import the Classes correctly; this can be done with the call:
+
+```python
+import numpy as np #importing numpy
+import pandas as pd #importing pandas
+from monte_carlo import Die, Game, Analyzer #importing the classes needed for using the monte_carlo package
+```
+#### The Die Class:
+
+* Now we will create some Die objects:
+
+   ```python
+   die1 = Die(np.array([1,2,3,4,5,6]))#fair
+   die2 = Die(np.array([1,2,3,4,5,6]))#fair
+   ```
+   This creates two identical dice with 6 "faces," each with an equal likelihood of being rolled.
+      * The faces are passed as a np.array() of objects, the objects should be a number or a string
+  
+* Dice can also be created by passing a separate np.array() of likelihoods:
+
+  ```python
+  die3 = Die(np.array([1,2,3,4,5,6]),np.array([5,1,1,1,1,1])) this makes the value 1, 5 times more likely to occur.
+  ```
+
+* The side likelihoods can also be changed using the change_weight() method.
+
+  ```python
+  die1.change_weight(1,5)
+  ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
