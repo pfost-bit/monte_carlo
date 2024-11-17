@@ -59,7 +59,7 @@ class Game():
         elif form == "narrow":
             results_narrow = self.results.copy().stack().reset_index() #changes from wide to narrow
             results_narrow.columns = ['Roll', 'Die', 'Outcome'] # gives new column names
-            results_narrrow.set_index(['Roll', 'Die'], inplace = True) # gives new indicies as a multindex
+            results_narrow.set_index(['Roll', 'Die'], inplace = True) # gives new indicies as a multindex
             return results_narrow.copy() #returns narrow
         else:
             raise ValueError("The parameter of form should by 'wide' or 'narrow'") #error if not wide or narrow
