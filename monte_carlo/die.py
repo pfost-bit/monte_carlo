@@ -28,10 +28,12 @@ class Die():
             self.faces = np.array(faces) #finally creates the array of faces
 
         #creates the self.weights array (defaults to 1)
-        if weight.ndim == 0: #check to see if base case (weight = 1)
-            self.weight = np.ones(len(self.faces))
-        elif type(weight) != np.ndarray: #check to see if weight is correct type
+        if type(weight) != np.ndarray: #check to see if weight is correct type
             raise TypeError("The type() of weights should be a ndarray")
+        elif weight.ndim == 0: #check to see if base case (weight = 1)
+            self.weight = np.ones(len(self.faces))
+        elif len(faces)!=len(weight):
+            raise ValueError("The weights array should have the same length as the faces array")
         else:    
             self.weight = weight
 
