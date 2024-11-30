@@ -1,4 +1,5 @@
 # monte_carlo
+#### By Patrick Foster
 
 A repository to create and test a sample Monte-Carlo simulator for DS5100. The project was to create a simple Monte-Carlo simulator. This project entailed two parts.
 
@@ -233,8 +234,17 @@ Permutation
 (6, 1)	1
 ```
 
+## API and Documentation  
 
+We can see some information about the package by using the help command 
 
+```python
+help(monte_carlo)
+```
+
+```raw
+
+```
 
 
 
