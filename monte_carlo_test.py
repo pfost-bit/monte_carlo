@@ -70,10 +70,117 @@ class MonteCarloTestSuite(unittest.TestCase):
         self.assertEqual(sum(die_state.index == test_die.faces), len(test_die.faces)) # check to see if all of the faces are in the resulting die state
         self.assertEqual(sum(die_state.weight),len(test_die.weight)) # check to see if all of the weights are one and are added to the dataframe
         
+    def test_5_create_game(self):
+        """
+        Create a game object and make sure that a list of die were passed.
+        """
+        test_die = Die(np.array([1,2,3,4,5,6]))#create a die object
+        test_game = Game([test_die])#create a game object
         
+        self.assertIsInstance(test_game, Game)#assert that a game was created as a game type
+        
+        with self.assertRaises(ValueError):#assert that only die objects can be passed
+            Game([1])
+        
+    def test_6_play_game(self):
+        """
+        Create a game object, and play a game
+        """
+        
+        test_die = Die(np.array([1,2,3,4,5,6]))#create a die object
+        test_game = Game([test_die])#create a game object
+        
+        self.assertEqual(len(test_game.results), 0) #should be an empty dataframe
+        test_game.play(5) #rolls the die 5 times 
+        self.assertEqual(len(test_game.results),5) #should now have 1 die rolled 5 times
+    
+    def test_7_show_results_wide(self):
+        """
+        Create a game object, play a game, show results in the wide format
+        """
+        test_die = Die(np.array([1,2,3,4,5,6]))#create a die object
+        test_game = Game([test_die])#create a game object
+        test_game.play(5) #roll
+        
+        self.assertIsInstance(test_game.show_results(),pd.DataFrame) #assert a DataFrame is returned
+        
+        with self.assertRaises(ValueError): #test that only wide or narrow could be passed
+            test_game.show_results("yew")
+       
+    def test_8_show_results_wide(self):
+        """
+        Create a game object, play a game, show results in narrow format
+        """
+        test_die = Die(np.array([1,2,3,4,5,6]))#create a die object
+        test_game = Game([test_die])#create a game object
+        test_game.play(5) #roll  
 
+        self.assertIsInstance(test_game.show_results("narrow"), pd.DataFrame) #assert a DataFrame is returned
+        
+    def test_9_create_analyzer(self):
+        """
+        Create a analyzer object, see if created correctly
+        """
+        
+        test_die = Die(np.array([1,2,3,4,5,6]))#create a die object
+        test_game = Game([test_die])#create a game object
+        test_game.play(5) #roll
+        test_analyzer = Analyzer(test_game) #create an Analyzer object
+        
+        self.assertIsInstance(test_analyzer, Analyzer) #assert that an Analyzer object is created
+        
+        with self.assertRaises(ValueError):#assert that only games can be passed
+            Analyzer(1)
+            
+    def test_10_JackPot(self):
+        """
+        Create an analyzer object, test to see if the JackPot method runse
+        """
+        
+        test_die = Die(np.array([1,2,3,4,5,6]))#create a die object
+        test_game = Game([test_die])#create a game object
+        test_game.play(10) #roll
+        test_analyzer = Analyzer(test_game) #create an Analyzer object 
+        
+        self.assertIsInstance(test_analyzer.JackPot(),int) #assert an int is returned
+        
+    def test_11_FaceCounts(self):
+        """
+        Create an analyzer object, test to see if the FaceCounts creates a dataframe with the results 
+        """
+        
+        test_die = Die(np.array([1,2,3,4,5,6]))#create a die object
+        test_game = Game([test_die])#create a game object
+        test_game.play(10) #roll
+        test_analyzer = Analyzer(test_game) #create an Analyzer object
+        
+        self.assertIsInstance(test_analyzer.FaceCounts(),pd.DataFrame)#test to see if a dataframe of results its returned
+        
+    def test_12_PermCounts(self):
+        """
+        Create an analyzer object, test to see if the PermCounts creates a dataframe with the results 
+        """
+        
+        test_die = Die(np.array([1,2,3,4,5,6]))#create a die object
+        test_game = Game([test_die])#create a game object
+        test_game.play(10) #roll
+        test_analyzer = Analyzer(test_game) #create an Analyzer object
+        
+        self.assertIsInstance(test_analyzer.PermCounts(),pd.DataFrame)#test to see if a dataframe of results its returned        
 
         
+    def test_13_ComboCounts(self):
+        """
+        Create an analyzer object, test to see if the ComboCounts creates a dataframe with the results 
+        """
+        
+        test_die = Die(np.array([1,2,3,4,5,6]))#create a die object
+        test_game = Game([test_die])#create a game object
+        test_game.play(10) #roll
+        test_analyzer = Analyzer(test_game) #create an Analyzer object
+        
+        self.assertIsInstance(test_analyzer.ComboCounts(),pd.DataFrame)#test to see if a dataframe of results its returned
+ 
 if __name__ == '__main__':
     
     unittest.main(verbosity=3)

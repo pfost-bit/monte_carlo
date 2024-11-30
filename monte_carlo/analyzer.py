@@ -35,7 +35,7 @@ class Analyzer():
         results = self.game.show_results().copy() #get results
         jackpots = results.apply(lambda die_rolls: len(set(die_rolls)) == 1, axis=1).sum()# for a row wise function we can use .apply, lamba function checks the set of the row and sees if it has one value. 
         
-        return jackpots
+        return int(jackpots)
 
     def FaceCounts(self):
         """

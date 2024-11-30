@@ -21,7 +21,7 @@ class Game():
     def __init__(self,  die_list):
         
         # list comprehension to check if all members of type "Die"
-        if [die for die in die_list if not isinstance(die, Die)]:
+        if [die for die in die_list if not isinstance(die, Die)]:   
             raise ValueError("All elements in die_list shoud be Die objects")
         self.die_list = die_list
         self.results = pd.DataFrame()
