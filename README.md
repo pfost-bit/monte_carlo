@@ -243,7 +243,172 @@ help(monte_carlo)
 ```
 
 ```raw
+Help on package monte_carlo:
 
+NAME
+    monte_carlo - monte_carlo
+
+DESCRIPTION
+    This package provides tools for running Monte Carlo simulations, including components for handling dice, games, and analysis.
+
+    Modules:
+        - die: Contains the Die class for simulating dice rolls.
+        - game: Contains the Game class for managing dice games.
+        - analyzer: Contains the Analyzer class for analyzing game results.
+
+PACKAGE CONTENTS
+    analyzer
+    die
+    game
+
+CLASSES
+    builtins.object
+        monte_carlo.analyzer.Analyzer
+        monte_carlo.die.Die
+        monte_carlo.game.Game
+
+    class Analyzer(builtins.object)
+     |  Analyzer(game)
+     |
+     |  An Analyzer object takes the results of a single game and computes various descriptive statistical properties about it.
+     |
+     |  Methods:
+     |      JackPot(): A method to determine the numnber of "jackpots" rolled in a game.
+     |      FaceCounts(): A method to return a datframe with the total number of facecounts for each die.
+     |      ComboCounts(): A method to count the counts of each combination of faces rolled.
+     |      PermCounts(): A method to count the counts of each permuatation of the face rolled.
+     |
+     |  Attributes:
+     |      game: The game object to analyze, must be a game object
+     |
+     |  Methods defined here:
+     |
+     |  ComboCounts(self)
+     |      A method to count the counts of each combination of faces rolled.
+     |
+     |      returns:
+     |          combo_counts: pd.DataFrame of the results. A datframe with the the Combinations and their counts
+     |
+     |  FaceCounts(self)
+     |      A method to count the total number of each face.
+     |
+     |      returns:
+     |          face_counts: pd.DataFrame of the results. A wide dataframe that shows how many times each face was rolled per dice.
+     |
+     |  JackPot(self)
+     |      A method to determine how many jackpots were rolled in the game, i.e. all of the faces are the same for the die. All heads on a coin for example.
+     |
+     |      returns:
+     |          int for the number of times all the outcomes were the same.
+     |
+     |  PermCounts(self)
+     |      A method to count the counts of each permuatation of the face rolled.
+     |
+     |      returns:
+     |          perm_counts: pd.DataFrame of the results.
+     |
+     |  __init__(self, game)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
+
+    class Die(builtins.object)
+     |  Die(faces, weight=array(-0.))
+     |
+     |  A class which initializes a Die object. This object has a number of "faces", and weight "w". The after creation the Die object it can be rolled n number of times.
+     |
+     |  Methods:
+     |      change_weight(weight): Changes the weight of a single face
+     |      roll_die(n): rolls the die a set number of times
+     |      show_die_state(): Shows the current die state
+     |
+     |  Attributes:
+     |      faces: The number of faces a die object has. The faces argument is a numpy array. The array should be of subtypes: str or numbers.
+     |      weight: The weight initializes as a weight of 1, but can be changed as needed. The weights should be passed as a np.array of weights.
+     |
+     |  Methods defined here:
+     |
+     |  __init__(self, faces, weight=array(-0.))
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  change_weight(self, face, new_weight)
+     |      A method to change the weight of a single face.
+     |
+     |      args:
+     |          face:
+     |               The name of the Face whose weight is to be changed (should be in list of faces)
+     |          new_weight:
+     |               The new weight for the face (should be an number or castable as one) larger = more frequent
+     |
+     |  roll_die(self, n)
+     |      A method to roll the die n times.
+     |
+     |      args:
+     |          n: The number of times to roll the dice, should be an int.
+     |      returns:
+     |          result: a list of outcomes
+     |
+     |  show_die_state(self)
+     |      A method to return a copy of the private die_tables state
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
+
+    class Game(builtins.object)
+     |  Game(die_list)
+     |
+     |  A class to take a list of similar die, and play a game.
+     |      A game is to roll the dice, one or more times
+     |      Similar means to have the same number of "faces", they could have different weights, i.e. flip two coins, one fair one that prefers heads etc
+     |
+     |  Methods:
+     |      play(rolls): A method to play a game (roll the die objects, num_of_rolls times)
+     |      show_results: A method to return the results in a pd.DataFrame. Can be wide or narrow.
+     |
+     |  Attributes:
+     |      die_list: A list of Die objects.
+     |      results: A pd.DataFrame of Results. The results are the values for the each time the dice was rolled.
+     |
+     |  Methods defined here:
+     |
+     |  __init__(self, die_list)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  play(self, num_of_rolls)
+     |      A method to play a game a certain number of times. Stores the result in a pd.DataFrame()
+     |      args:
+     |          num_rolls: how many times each die is rolled.
+     |      returns:
+     |          self.results: changes the attribute of results
+     |
+     |  show_results(self, form='wide')
+     |      A method to return the results of the results DataFrame. The dataframe is returned as a wide dataframe by default, and a narrow one if wanted.
+     |      args:
+     |          form: "wide" or "narrow" (default of "wide)
+     |      returns:
+     |          self.results.copy(): A copy of the results table.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
 ```
 
 
