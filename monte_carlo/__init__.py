@@ -1,6 +1,5 @@
 """
 monte_carlo
-===========
 
 This package provides tools for running Monte Carlo simulations, including components for handling dice, games, and analysis.
 
