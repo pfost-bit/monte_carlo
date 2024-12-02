@@ -1,4 +1,4 @@
----
+---YAML
 title: monte_carlo
 name: By Patrick Foster
 ---
