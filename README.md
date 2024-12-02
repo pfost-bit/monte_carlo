@@ -1,8 +1,9 @@
-```yml
-title: "monte_carlo" 
-author: "Patrick Foster" 
-date: "2024-12-02" 
-```
+
+# monte_carlo 
+---
+## By: Patrick Foster
+---
+
 
 
 A repository to create and test a sample Monte-Carlo simulator for DS5100. The project was to create a simple Monte-Carlo simulator. This project entailed two parts.
