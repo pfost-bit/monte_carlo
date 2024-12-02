@@ -1,6 +1,7 @@
-# monte_carlo
-#### By Patrick Foster
-
+---
+title: monte_carlo
+name: By Patrick Foster
+---
 A repository to create and test a sample Monte-Carlo simulator for DS5100. The project was to create a simple Monte-Carlo simulator. This project entailed two parts.
 
 1. To create a Python project that has three classes.
