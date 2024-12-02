@@ -1,4 +1,4 @@
---- 
+---yml
 title: "monte_carlo" 
 author: "Patrick Foster" 
 date: "2024-12-02" 
