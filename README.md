@@ -1,7 +1,6 @@
 
 # monte_carlo 
----
-## By: Patrick Foster
+### By: Patrick Foster
 ---
 
 
